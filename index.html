@@ -549,6 +549,22 @@ src="https://www.facebook.com/tr?id=1420252429785689&ev=PageView&noscript=1"
     });
   }, { threshold: 0.12 });
   reveals.forEach(r => io.observe(r));
+
+
+
+  // Track CTA button clicks
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Google Analytics
+      gtag('event', 'cta_click', { event_category: 'engagement' });
+
+      // Facebook Pixel
+      fbq('track', 'InitiateCheckout');
+
+      // // Pinterest
+      // pintrk('track', 'checkout');
+    });
+  });
 </script>
 </body>
 </html>
